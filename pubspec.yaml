@@ -1,0 +1,21 @@
+name: nexa
+description: NEXA — Chambres de trading IA multipaires (Binance).
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^1.2.2
+  crypto: ^3.0.3
+  flutter_secure_storage: ^9.2.2
+  shared_preferences: ^2.3.2
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true

@@ -1,0 +1,18 @@
+workflows:
+  nexa-android:
+    name: NEXA Android APK
+    max_build_duration: 60
+    environment:
+      java_version: "17"
+      flutter: stable
+    scripts:
+      - name: Récupération des dépendances
+        script: flutter packages pub get
+      - name: Build APK release
+        script: flutter build apk --release
+    artifacts:
+      - build/**/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - destinbyoto@gmail.com
