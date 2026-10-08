@@ -3,10 +3,9 @@ workflows:
     name: NEXA Android APK
     max_build_duration: 60
     environment:
-      java_version: "17"
       flutter: stable
     scripts:
-      - name: Récupération des dépendances
+      - name: Dependance Flutter
         script: flutter packages pub get
       - name: Build APK release
         script: flutter build apk --release
