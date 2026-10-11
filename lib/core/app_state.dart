@@ -135,10 +135,14 @@ class AppState extends ChangeNotifier {
             } catch (_) {}
           },
           onDone: _onWsDown,
-          onError: (_) => _onWsDown(),
+          onError: (_) {
+            _onWsDown();
+          },
           cancelOnError: true,
         );
-      }).catchError((_) => _onWsDown());
+      }).catchError((_) {
+      _onWsDown();
+    });
     } catch (_) {
       _onWsDown();
     }
