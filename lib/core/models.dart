@@ -54,6 +54,9 @@ class Position {
     required this.mode,
     required this.reason,
     required this.openedAt,
+    this.exitPrice,
+    this.closedAt,
+    this.pnl,
     this.realQty,
   });
 
@@ -98,6 +101,8 @@ class Position {
 }
 
 class TradeSettings {
+  TradeSettings();
+
   double targetUsd = 5.0;     // gain visé par entrée
   double minScore = 68;       // seuil de signal
   int maxOpen = 3;            // positions simultanées max
