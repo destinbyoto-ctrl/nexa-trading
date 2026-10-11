@@ -62,7 +62,7 @@ class _TradeRoomState extends State<TradeRoom> {
                     ],
                   ),
                 ),
-                Chip(
+                NexaChip(
                     text:
                         'P&L ${st.portfolio.realizedPnl >= 0 ? "+" : ""}${st.portfolio.realizedPnl.toStringAsFixed(2)} \$',
                     color: st.portfolio.realizedPnl >= 0
@@ -117,7 +117,7 @@ class _OpenTile extends StatelessWidget {
                     style: const TextStyle(
                         fontWeight: FontWeight.w700, fontSize: 15)),
                 const SizedBox(width: 8),
-                Chip(
+                NexaChip(
                     text: pos.mode == 'real' ? 'RÉEL' : 'PAPIER',
                     color: pos.mode == 'real'
                         ? const Color(0xFFFF4D6D)
