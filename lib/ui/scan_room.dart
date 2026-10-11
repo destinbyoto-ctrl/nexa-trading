@@ -1,4 +1,6 @@
 // NEXA — Chambre du Scanner : radar animé + classement des paires.
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import '../core/app_state.dart';
 import '../core/models.dart';
@@ -105,7 +107,7 @@ class _ScanTile extends StatelessWidget {
                         color: Colors.white.withValues(alpha: 0.5),
                         fontSize: 12)),
                 const Spacer(),
-                if (scan.isHot) const Chip(text: 'SETUP', color: Color(0xFF16D67E)),
+                if (scan.isHot) const NexaChip(text: 'SETUP', color: Color(0xFF16D67E)),
                 const SizedBox(width: 6),
                 Text(scan.score.toStringAsFixed(0),
                     style: TextStyle(
@@ -124,9 +126,9 @@ class _ScanTile extends StatelessWidget {
               runSpacing: 4,
               children: [
                 for (final r in scan.reasons)
-                  Chip(text: r, color: const Color(0xFF7C5CFF)),
+                  NexaChip(text: r, color: const Color(0xFF7C5CFF)),
                 if (scan.reasons.isEmpty)
-                  Chip(text: 'en attente de signal', color: Color(0x80FFFFFF)),
+                  NexaChip(text: 'en attente de signal', color: Color(0x80FFFFFF)),
               ],
             ),
           ],
@@ -209,7 +211,7 @@ class _RadarPainter extends CustomPainter {
 
     // Ligne de balayage.
     final lineEnd = Offset(
-        cx + r * (start.cos()), cy + r * (start.sin()));
+        cx + r * math.cos(start), cy + r * math.sin(start));
     final sweepLine = Paint()
       ..strokeWidth = 2
       ..color = const Color(0xFF00E5FF).withValues(alpha: 0.85);
@@ -224,8 +226,8 @@ class _RadarPainter extends CustomPainter {
       final s = scans[i];
       final angle = (i * 2.399963) % (2 * 3.14159265); // nombre d'or
       final dist = r * (1.05 - (s.score / 100).clamp(0.0, 1.0) * 0.75);
-      final px = cx + dist * angle.cos();
-      final py = cy + dist * angle.sin();
+      final px = cx + dist * math.cos(angle);
+      final py = cy + dist * math.sin(angle);
       // Pulsation décalée par index.
       final pulse = 0.5 + 0.5 * ((progress * 4 + i * 0.23) % 1.0);
       final color =
