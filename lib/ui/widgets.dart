@@ -94,10 +94,10 @@ class _PulsingDotState extends State<PulsingDot>
   }
 }
 
-class Chip extends StatelessWidget {
+class NexaChip extends StatelessWidget {
   final String text;
   final Color color;
-  const Chip({super.key, required this.text, required this.color});
+  const NexaChip({super.key, required this.text, required this.color});
 
   @override
   Widget build(BuildContext context) {
