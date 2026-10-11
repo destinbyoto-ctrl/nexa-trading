@@ -216,7 +216,7 @@ class _Room extends StatelessWidget {
                   ],
                 ),
               ),
-              Chip(text: badge, color: colors[0]),
+              NexaChip(text: badge, color: colors[0]),
             ],
           ),
         ),
